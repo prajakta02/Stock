@@ -15,7 +15,6 @@ export class TransactionpageComponent implements OnInit {
   transactions: Transaction[];
   ngOnInit() {
     this.transactions = this.transactionService.getTransactions();
-    console.log(this.transactions);
   }
 
 }

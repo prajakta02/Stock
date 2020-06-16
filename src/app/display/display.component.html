@@ -31,8 +31,8 @@
             </table>
           </mat-card-content>
           <mat-card-actions>
-            <button (click)="buyStock(stockNo.value, stock)" class="buy" mat-button>Buy</button>
-            <button (click)="sellStock(stockNo.value, stock)"class="sell" mat-button>Sell</button>
+            <button (click)= "buyStock(stockNo.value, stock); stockNo.value = '';" class="buy" mat-button>Buy</button>
+            <button (click)="sellStock(stockNo.value, stock); stockNo.value = '';"class="sell" mat-button>Sell</button>
           </mat-card-actions>
         </mat-card>
       </mat-grid-tile>

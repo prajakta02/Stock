@@ -1,10 +1,11 @@
 import { Transaction } from './../shared/transaction';
 import { CompanyStock } from './../shared/company-stock';
+import { transactions } from './../shared/transactions';
+
 import { CompanyStockService } from './../services/company-stock.service';
 
 import { Component, OnInit } from '@angular/core';
 
-export const transactions: Transaction[] = [];
 
 @Component({
   selector: 'app-display',
@@ -26,7 +27,6 @@ export class DisplayComponent implements OnInit {
           this.balanceAmount -= (stock.stockPrice * value);
           transactions.push(new Transaction(stock.name, value, 'buy'));
           stock.currentStock += Number(value);
-          console.log(transactions);
         }
       } else {
         alert('You have insufficient balance!');
@@ -41,7 +41,6 @@ export class DisplayComponent implements OnInit {
           this.balanceAmount += (stock.stockPrice * value);
           transactions.push(new Transaction(stock.name, value, 'sell'));
           stock.currentStock -= Number(value);
-          console.log(transactions);
         }
 
     } else {
@@ -52,6 +51,5 @@ export class DisplayComponent implements OnInit {
   constructor(private companyStockService: CompanyStockService) { }
   ngOnInit() {
     this.companyStocks = this.companyStockService.getStocks();
-    console.log(this.companyStocks);
   }
 }
