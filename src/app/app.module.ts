@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import 'hammerjs';
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DisplayComponent } from './display/display.component';
 import { TransactionpageComponent } from './transactionpage/transactionpage.component';
+import {MatButtonModule, MatCardModule, MatListModule } from '@angular/material';
+import 'hammerjs';
 
 
 @NgModule({
@@ -24,7 +26,11 @@ import { TransactionpageComponent } from './transactionpage/transactionpage.comp
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatButtonModule,
+    MatCardModule,
+    MatListModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

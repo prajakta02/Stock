@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Info } from '../shared/dummyclass';
 
 @Component({
   selector: 'app-transactionpage',
