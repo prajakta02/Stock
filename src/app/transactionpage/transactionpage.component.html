@@ -1,25 +1,22 @@
-
-<mat-toolbar color="primary">
-  <span>STOCKAPP</span>
-  <a mat-button><span class="fa fa-home fa-lg"></span> Trade Stock</a>
-  <a mat-button><span class="fa fa-info fa-lg"></span> Transaction</a>
-
-</mat-toolbar>
-
 <div class="container"
-    fxLayout="column"
-    fxLayout.sm="column"
-    fxLayout.xs="column"
-    fxLayoutAlign.gt-md="space-around center"
-    fxLayoutGap="10px"
-    fxLayoutGap.xs="0">
+     fxLayout="column"
+     fxLayoutGap="10px">
+     <div fxFlex>
+         <h2>Transactions</h2>
+         <hr>
+     </div>
 
-  <div fxFlex="40">
-      <mat-card>
-          You purchased 3 stocks of company A
-      </mat-card>
-  </div>
-
+  <mat-list>
+    <mat-list-item *ngFor="let transaction of transactions">
+        <div *ngIf="transaction.transcType === 'buy'">
+            <mat-card class="transaction-buy"><h3 matLine>You purchased {{transaction.noOfStocks}} stocks of company {{transaction.company}}</h3></mat-card>
+        </div>
+        <div *ngIf="transaction.transcType === 'sell'">
+            <mat-card class="transaction-sell"><h3 matLine>You sold {{transaction.noOfStocks}} stocks of company {{transaction.company}}</h3></mat-card>
+        </div>
+      
+    </mat-list-item>
+  </mat-list>
 
 </div>
 

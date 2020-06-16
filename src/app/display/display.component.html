@@ -1,3 +1,43 @@
-<p>
-  display works!
-</p>
+<div class="container" fxLayout="column" fxLayoutGap="10px">
+  <div>
+    <h1>Your Balance Amount:   <b>${{balanceAmount}}</b></h1>
+    <h3>Stocks</h3>
+    <hr>
+    
+  </div>
+
+
+  <div fxFlex>
+    <mat-grid-list cols="4" rowHeight="1:1">
+      <mat-grid-tile *ngFor="let stock of companyStocks">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title><h2>{{ stock.name | uppercase}}</h2></mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <table class="stock-table">
+              <tr>
+                <th>Stocks left</th>
+                <th><strong>{{ stock.currentStock }}</strong></th>
+              </tr>
+              <tr>
+                <th>Current Stock Price</th>
+                <th><strong>{{ stock.stockPrice }}</strong></th>
+              </tr>
+              <tr>
+                <th>No. of stocks to Buy/Sell</th>
+                <th><input #stockNo class="stock-no"></th>
+              </tr>
+            </table>
+          </mat-card-content>
+          <mat-card-actions>
+            <button (click)="buyStock(stockNo.value, stock)" class="buy" mat-button>Buy</button>
+            <button (click)="sellStock(stockNo.value, stock)"class="sell" mat-button>Sell</button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+</div>
+
