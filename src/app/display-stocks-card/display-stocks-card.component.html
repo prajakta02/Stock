@@ -20,8 +20,8 @@
 </div>
 
 <div *ngIf="isMobile === true">
-  <div class="container-mobile" fxLayout="column" fxLayoutGap="10px">
-    <div>
+  <div class="container-mobile" fxLayout="column">
+    <div fxFlex>
       <h1 >Your Balance Amount:   <b>${{balanceAmount}}</b></h1>
       <h3>Stocks</h3>
       <hr>    
@@ -30,7 +30,7 @@
   
     <div fxFlex>      
         <div *ngFor="let stock of companyStocks">
-          <app-stock-card [stock]="stock" [balanceAmount]="balanceAmount" (balanceUpdate) ="getUpdatedBalance($event)" style="margin: 2px;"></app-stock-card>
+          <app-stock-card  [stock]="stock" [balanceAmount]="balanceAmount" (balanceUpdate) ="getUpdatedBalance($event)" style="margin: 2px;"></app-stock-card>
           </div>
     </div>
   

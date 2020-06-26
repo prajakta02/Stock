@@ -1,34 +1,72 @@
-<div class="container" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign.gt-md="space-around center">
-  <div fxFlex>
-    <h2>Transactions</h2>
-    <hr>
+<ng-container *ngIf="isMobile; else desktop">
+  <div class="mobile-container" fxLayout="column">
+    <div fxFlex>
+      <h2>Transactions</h2>
+      <hr>
+    </div>
+  
+    <div *ngIf="transactions.length > 0">
+      <mat-list *ngFor="let transaction of transactions | paginate:{itemsPerPage: 8, currentPage:p}">
+        <mat-list-item *ngIf="transaction.transcType === 'buy'">
+          <div>
+            <mat-card class="transaction-buy">
+              <h5 matLine>You purchased {{transaction.noOfStocks}} stocks of company {{transaction.company}}</h5>
+            </mat-card>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="transaction.transcType === 'sell'">
+          <div>
+            <mat-card class="transaction-sell">
+              <h5 matLine>You sold {{transaction.noOfStocks}} stocks of company {{transaction.company}}</h5>
+            </mat-card>
+          </div>
+        </mat-list-item>
+  
+  
+  
+      </mat-list>
+  
+      <pagination-controls (pageChange)="p=$event"> </pagination-controls>
+    </div>
+    <div *ngIf="transactions.length <= 0">
+      No transactions to display!
+    </div>
+  
   </div>
+</ng-container>
+<ng-template #desktop>
+  <div class="container" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign.gt-md="space-around center">
+    <div fxFlex>
+      <h2>Transactions</h2>
+      <hr>
+    </div>
 
-  <div *ngIf="transactions.length > 0">
-    <mat-list *ngFor="let transaction of transactions | paginate:{itemsPerPage: 8, currentPage:p}">
-      <mat-list-item *ngIf="transaction.transcType === 'buy'">
-        <div>
-          <mat-card class="transaction-buy">
-            <h3 matLine>You purchased {{transaction.noOfStocks}} stocks of company {{transaction.company}}</h3>
-          </mat-card>
-        </div>
-      </mat-list-item>
-      <mat-list-item *ngIf="transaction.transcType === 'sell'">
-        <div>
-          <mat-card class="transaction-sell">
-            <h3 matLine>You sold {{transaction.noOfStocks}} stocks of company {{transaction.company}}</h3>
-          </mat-card>
-        </div>
-      </mat-list-item>
+    <div *ngIf="transactions.length > 0">
+      <mat-list *ngFor="let transaction of transactions | paginate:{itemsPerPage: 8, currentPage:p}">
+        <mat-list-item *ngIf="transaction.transcType === 'buy'">
+          <div>
+            <mat-card class="transaction-buy">
+              <h3 matLine>You purchased {{transaction.noOfStocks}} stocks of company {{transaction.company}}</h3>
+            </mat-card>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="transaction.transcType === 'sell'">
+          <div>
+            <mat-card class="transaction-sell">
+              <h3 matLine>You sold {{transaction.noOfStocks}} stocks of company {{transaction.company}}</h3>
+            </mat-card>
+          </div>
+        </mat-list-item>
 
 
 
-    </mat-list>
+      </mat-list>
 
-    <pagination-controls (pageChange)="p=$event"> </pagination-controls>
+      <pagination-controls (pageChange)="p=$event"> </pagination-controls>
+    </div>
+    <div *ngIf="transactions.length <= 0">
+      No transactions to display!
+    </div>
+
   </div>
-  <div *ngIf="transactions.length <= 0">
-    No transactions to display!
-  </div>
-
-</div>
+</ng-template>
