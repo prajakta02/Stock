@@ -1,0 +1,27 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>{{ stock.name | uppercase}}</h2>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <table class="stock-table">
+      <tr>
+        <th>Your Stocks left</th>
+        <th><strong>{{ stock.currentStock }}</strong></th>
+      </tr>
+      <tr>
+        <th>Current Stock Price</th>
+        <th><strong>{{ stock.stockPrice }}</strong></th>
+      </tr>
+      <tr>
+        <th>No. of stocks to Buy/Sell</th>
+        <th><input #stockNo class="stock-no"></th>
+      </tr>
+    </table>
+  </mat-card-content>
+  <mat-card-actions align="center">
+    <button (click)="buyStock(stockNo.value, stock); stockNo.value = '';" class="buy" mat-button>Buy</button>
+    <button (click)="sellStock(stockNo.value, stock); stockNo.value = '';" class="sell" mat-button>Sell</button>
+  </mat-card-actions>
+</mat-card>

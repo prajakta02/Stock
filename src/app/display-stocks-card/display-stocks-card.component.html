@@ -1,0 +1,38 @@
+<div *ngIf="isMobile === false">
+  <div class="container" fxLayout="column" fxLayoutGap="10px">
+    <div>
+      <h1 >Your Balance Amount:   <b>${{balanceAmount}}</b></h1>
+      <h3>Stocks</h3>
+      <hr>
+      
+    </div>
+  
+  
+    <div fxFlex>
+      <mat-grid-list cols="4" rowHeight="1:1">
+        <mat-grid-tile *ngFor="let stock of companyStocks">
+          <app-stock-card [stock]="stock" [balanceAmount]="balanceAmount" (balanceUpdate) ="getUpdatedBalance($event)" ></app-stock-card>
+          </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  
+  </div>  
+</div>
+
+<div *ngIf="isMobile === true">
+  <div class="container-mobile" fxLayout="column" fxLayoutGap="10px">
+    <div>
+      <h1 >Your Balance Amount:   <b>${{balanceAmount}}</b></h1>
+      <h3>Stocks</h3>
+      <hr>    
+    </div>
+  
+  
+    <div fxFlex>      
+        <div *ngFor="let stock of companyStocks">
+          <app-stock-card [stock]="stock" [balanceAmount]="balanceAmount" (balanceUpdate) ="getUpdatedBalance($event)" style="margin: 2px;"></app-stock-card>
+          </div>
+    </div>
+  
+  </div>
+</div>

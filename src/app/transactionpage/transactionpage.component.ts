@@ -1,6 +1,8 @@
 import { TransactionService } from './../services/transaction.service';
 import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../shared/transaction';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 
 @Component({
@@ -9,6 +11,8 @@ import { Transaction } from '../shared/transaction';
   styleUrls: ['./transactionpage.component.scss']
 })
 export class TransactionpageComponent implements OnInit {
+
+  p:number=1;
 
   constructor(private transactionService: TransactionService) { }
 
